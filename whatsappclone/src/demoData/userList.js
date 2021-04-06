@@ -7,7 +7,6 @@ const userList = [
   },
   {
     name: 'Ariful',
-    avatar_link: require('../Images/pr1.jpg'),
     last_massage: 'Hey! I am using Whatsapp.',
     username: 'arif12',
   },

@@ -4,11 +4,18 @@ import BackGroundContainer from '../../../../../common/BackGroundContainer';
 import ChatHeader from './ChatHeader';
 import TypeMessageContainer from './TypeMessageContainer';
 import MessagingContainer from './MessagingContainer';
-function ChattingPage() {
+function ChattingPage(props) {
+  const {navigation, route} = props;
+  const {item, title} = route.params;
+  console.log(item);
   return (
-    <BackGroundContainer >
-    
-      <ChatHeader userActivity="Online" userName="Ratul Bhowmick" />
+    <BackGroundContainer>
+      <ChatHeader
+        userActivity="Online"
+        userName={item.name}
+        avatar={item.avatar_link}
+        navigation={navigation}
+      />
       <MessagingContainer />
       <TypeMessageContainer />
     </BackGroundContainer>

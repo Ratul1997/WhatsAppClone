@@ -11,9 +11,10 @@ import color from '../../../../../constant/color';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-const image_path = '../../../../../Images/pr1.jpg';
+const imagepath = require('../../../../../Images/profile_image.png');
 function ChatHeader(props) {
-  const {userActivity, userName} = props;
+  const {userActivity, userName, navigation, avatar} = props;
+  // console.log(props);
   return (
     <View
       style={{
@@ -22,7 +23,9 @@ function ChatHeader(props) {
         backgroundColor: color.primary_color,
         alignItems: 'center',
       }}>
-      <TouchableOpacity style={{width: '7%', marginLeft: normalization(5)}}>
+      <TouchableOpacity
+        style={{width: '7%', marginLeft: normalization(5)}}
+        onPress={() => navigation.goBack()}>
         <IonIcons
           name="chevron-back-outline"
           size={normalization(20)}
@@ -31,7 +34,7 @@ function ChatHeader(props) {
       </TouchableOpacity>
       <TouchableOpacity style={{width: '14%'}}>
         <Image
-          source={require(image_path)}
+          source={avatar ? avatar : imagepath}
           style={{
             height: normalization(40),
             width: normalization(40),

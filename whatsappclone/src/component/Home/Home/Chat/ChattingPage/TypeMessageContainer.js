@@ -8,7 +8,12 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AutoExpandingTextInput from './AutonExpandingTextInput';
+import IonIcons from 'react-native-vector-icons/Ionicons';
 function TypeMessageContainer() {
+  const [text, setText] = useState('');
+  const trimWhiteSpace = str => {
+    return str.trim();
+  };
   return (
     <View
       style={{
@@ -16,8 +21,7 @@ function TypeMessageContainer() {
         bottom: 5,
         flexDirection: 'row',
         marginHorizontal: normalization(10),
-      }}
-      onLayout={event => console.log(event.nativeEvent.layout)}>
+      }}>
       <View
         style={{
           width: '86%',
@@ -44,6 +48,8 @@ function TypeMessageContainer() {
           placeholder="Type A Message"
           multiline
           numberOfLines={4}
+          onChangeText={text => setText(text)}
+          value={text}
         />
         <View
           style={{
@@ -60,12 +66,14 @@ function TypeMessageContainer() {
             color="gray"
             style={{transform: [{rotateY: '180deg'}]}}
           />
-          <Fontisto
-            name="camera"
-            size={normalization(18)}
-            color="gray"
-            style={{marginLeft: normalization(10)}}
-          />
+          {trimWhiteSpace(text) === '' && (
+            <Fontisto
+              name="camera"
+              size={normalization(18)}
+              color="gray"
+              style={{marginLeft: normalization(10)}}
+            />
+          )}
         </View>
       </View>
       <View
@@ -85,11 +93,19 @@ function TypeMessageContainer() {
             alignItems: 'center',
             borderRadius: 50,
           }}>
-          <FontAwesome
-            name="microphone"
-            size={normalization(20)}
-            color={color.background_color}
-          />
+          {trimWhiteSpace(text) != '' ? (
+            <IonIcons
+              name="ios-send-sharp"
+              color={color.background_color}
+              size={normalization(15)}
+            />
+          ) : (
+            <FontAwesome
+              name="microphone"
+              size={normalization(20)}
+              color={color.background_color}
+            />
+          )}
         </TouchableOpacity>
       </View>
     </View>

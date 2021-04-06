@@ -9,12 +9,8 @@ export default function AutoExpandingTextInput(props) {
     <TextInput
       {...props}
       multiline={true}
-      onChangeText={text => {
-        setText(text);
-      }}
       onContentSizeChange={event => {
         setHeight(event.nativeEvent.contentSize.height);
-        console.log(height);
       }}
       style={{
         width: '57%',
@@ -23,7 +19,6 @@ export default function AutoExpandingTextInput(props) {
         height: normalization(Math.max(40, height)),
         maxHeight: normalization(85),
       }}
-      value={text}
     />
   );
 }

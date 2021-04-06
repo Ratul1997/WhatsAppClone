@@ -23,12 +23,13 @@ import PeopleListItem from './src/common/PeopleListItem';
 import Chat from './src/component/Home/Home/Chat';
 import People from './src/component/Home/Home/People';
 import ChattingPage from './src/component/Home/Home/Chat/ChattingPage';
-
+import {NavigationContainer} from '@react-navigation/native';
+import AppNavigation from './src/AppNavigation';
 const App = () => {
   return (
-    <View style={{backgroundColor: color.background_color}}>
-      <ChattingPage />
-    </View>
+    <NavigationContainer>
+      <AppNavigation />
+    </NavigationContainer>
   );
 };
 

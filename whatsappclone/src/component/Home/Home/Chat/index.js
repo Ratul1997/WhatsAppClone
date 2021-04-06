@@ -6,12 +6,13 @@ import normalization from '../../../../constant/normalize';
 import DummyData from '../../../../demoData/userList';
 import PeopleListItem from '../../../../common/PeopleListItem';
 import ChatList from './Chatlist';
-function Chat() {
+function Chat(props) {
+  const {navigation} = props;
   const renderItem = ({item, index}) => {
-    return <ChatList item={item} index={index} />;
+    return <ChatList item={item} index={index} navigation={navigation} />;
   };
 
-  console.log(DummyData);
+  // console.log(DummyData);
   return (
     <View>
       <Header title="Chat" />

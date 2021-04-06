@@ -6,7 +6,9 @@ const color = {
   searchbar_color: '#EAEAEA',
   searcicon_color: '#706F6F',
   text_color_white: 'white',
-  chat_send_background_color: '#dbf5b4'
+  chat_send_background_color: '#dbf5b4',
+  seen_icon_color:'#0D8CF3',
+  tab_icon_color:'#CFD8D5'
 };
 
 export default color;

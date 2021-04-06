@@ -8,9 +8,10 @@ import PeopleListItem from '../../../../common/PeopleListItem';
 import ContactList from './ContactList';
 import Status from './Status.js';
 
-function People() {
+function People(props) {
+  const {navigation} = props;
   const renderItem = ({item, index}) => {
-    return <ContactList item={item} index={index} />;
+    return <ContactList item={item} index={index} navigation={navigation} />;
   };
 
   console.log(DummyData);
@@ -25,7 +26,7 @@ function People() {
           marginLeft: normalization(10),
           marginBottom: normalization(12),
           fontSize: normalization(15),
-          color:'gray'
+          color: 'gray',
         }}>
         {' '}
         Contact List
