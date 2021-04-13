@@ -75,6 +75,11 @@ function Header(props) {
               color="white"
             />
           )}
+          {
+            title === 'Settings' && (
+              <Feather name="settings" size={normalization(15)} color="white" />
+            )
+          }
         </TouchableOpacity>
       </View>
     </View>

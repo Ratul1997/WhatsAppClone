@@ -11,13 +11,12 @@ const imagepath = require('../Images/profile_image.png');
 function PeopleListItem(props) {
   const {item, title, navigation} = props;
 
-  console.log(navigation);
   return (
     <TouchableHighlight
       style={{
         flexDirection: 'row',
         width: '100%',
-        marginVertical: normalization(5),
+        paddingVertical: normalization(5),
       }}
       onPress={() =>
         navigation.navigate('Chatting', {
