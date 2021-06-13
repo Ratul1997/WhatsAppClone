@@ -108,7 +108,7 @@ function LoginNavigation() {
 }
 
 function AppNavigation() {
-  const isLogin = false;
+  const isLogin = true;
   return isLogin ? <LoginNavigation /> : <SignUpStackNavigation />;
 }
 export default AppNavigation;

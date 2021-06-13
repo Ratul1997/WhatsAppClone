@@ -9,10 +9,27 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AutoExpandingTextInput from './AutonExpandingTextInput';
 import IonIcons from 'react-native-vector-icons/Ionicons';
+import {userActions} from '../../../../../actions/userActions';
+
+const userId = 1;
 function TypeMessageContainer() {
   const [text, setText] = useState('');
   const trimWhiteSpace = str => {
     return str.trim();
+  };
+
+  const sendMessage = async () => {
+    console.log(text);
+
+    const date = new Date();
+    const time = date.getTime();
+    
+    const {error} = await userActions.sendMessages(text, userId, time, false);
+    if (error) {
+      console.log(error);
+    } else {
+      setText('');
+    }
   };
   return (
     <View
@@ -92,7 +109,8 @@ function TypeMessageContainer() {
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: 50,
-          }}>
+          }}
+          onPress={trimWhiteSpace(text) != '' ? sendMessage : null}>
           {trimWhiteSpace(text) != '' ? (
             <IonIcons
               name="ios-send-sharp"

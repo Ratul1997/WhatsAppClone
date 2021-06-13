@@ -4,7 +4,8 @@ import color from '../../../../../../constant/color';
 import normalization from '../../../../../../constant/normalize';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-function ReceivedMessage() {
+import {calculation} from '../../../../../../helpers/calculation';
+function ReceivedMessage({data}) {
   return (
     <>
       <TouchableOpacity
@@ -19,7 +20,7 @@ function ReceivedMessage() {
             marginLeft: normalization(13),
             paddingRight: normalization(5),
             minWidth: '20%',
-            borderRadius: 5
+            borderRadius: 5,
           }}>
           <Text
             style={{
@@ -29,8 +30,8 @@ function ReceivedMessage() {
               paddingHorizontal: normalization(10),
               //   backgroundColor: 'red',
             }}>
-            Hi I am ashdjksdjkh jkashd kjhkshdjk hjksdh kjsahk hsakjdhjas khdsahjsh akjdhaksj hdsa mndbmnabs d
-           </Text>
+            {data.msg}
+          </Text>
           <Text
             style={{
               fontSize: normalization(10),
@@ -39,7 +40,7 @@ function ReceivedMessage() {
               bottom: 0,
               color: 'gray',
             }}>
-            10:15
+            {calculation.convertTimeToDate(data.time)}
           </Text>
         </View>
       </TouchableOpacity>

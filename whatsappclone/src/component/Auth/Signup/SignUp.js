@@ -5,22 +5,52 @@ import {
   TextInput,
   TouchableOpacity,
   Dimensions,
+  Button,
 } from 'react-native';
 import color from '../../../constant/color';
 import OtpView from './OtpView';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import normalization from '../../../constant/normalize';
 import FloatingButton from '../../../common/FloatingButton';
+import auth from '@react-native-firebase/auth';
 
 const HEIGHT = Dimensions.get('window').height;
 function Signup(props) {
   const {navigation} = props;
   const [height, setHeight] = useState(HEIGHT);
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [countryCode, setCountryCode] = useState('+880')
+  const [countryCode, setCountryCode] = useState('+880');
+  const [confirm, setConfirm] = useState(null);
+
+  const [code, setCode] = useState('');
   const onClick = () => {
     navigation.replace('UserInformation', {phoneNumber, countryCode});
   };
+
+  const signInWithPhoneNumber = async phoneNumber => {
+    const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
+    setConfirm(confirmation);
+  };
+
+  const confirmCode = async () => {
+    await confirm.confirm(code);
+  };
+
+  if (!confirm) {
+    return (
+      <Button
+        title="Phone Number Sign In"
+        onPress={() => signInWithPhoneNumber('+880 1515279018')}
+      />
+    );
+  }
+
+  return (
+    <>
+      <TextInput value={code} onChangeText={text => setCode(text)} />
+      <Button title="Confirm Code" onPress={() => confirmCode()} />
+    </>
+  );
   return (
     <View
       style={{backgroundColor: color.primary_color, flex: 1}}

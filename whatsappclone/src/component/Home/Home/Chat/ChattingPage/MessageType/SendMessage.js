@@ -4,7 +4,8 @@ import color from '../../../../../../constant/color';
 import normalization from '../../../../../../constant/normalize';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-function SendMessage() {
+import {calculation} from '../../../../../../helpers/calculation';
+function SendMessage({data}) {
   ///type 0 = unsent
   ///type 1 = sent
   /// type 2 = seen
@@ -41,7 +42,7 @@ function SendMessage() {
               paddingHorizontal: normalization(10),
               //   backgroundColor: 'red',
             }}>
-            Hi
+            {data.msg}
           </Text>
           <Text
             style={{
@@ -51,7 +52,7 @@ function SendMessage() {
               bottom: 0,
               color: 'gray',
             }}>
-            10:15
+            {calculation.convertTimeToDate(data.time)}
           </Text>
           {messageStatus === 0 ? (
             <AntDesign
